@@ -28,6 +28,68 @@ public class Movimentacao {
 	@ManyToMany
 	private List<Tag> tags = new ArrayList<Tag>();
 
+	@ManyToOne
+	private Conta conta;
+
+	@Enumerated(EnumType.STRING)
+	private TipoMovimentacao tipoMovimentacao;
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the descricao
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+	/**
+	 * @param descricao the descricao to set
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the data
+	 */
+	public Calendar getData() {
+		return data;
+	}
+
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(Calendar data) {
+		this.data = data;
+	}
+
+	/**
+	 * @return the valor
+	 */
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	/**
+	 * @param valor the valor to set
+	 */
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
 	/**
 	 * @return the tags
 	 */
@@ -36,65 +98,38 @@ public class Movimentacao {
 	}
 
 	/**
-	 * @param tags
-	 *            the tags to set
+	 * @param tags the tags to set
 	 */
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 
-	@ManyToOne
-	private Conta conta;
-
-	@Enumerated(EnumType.STRING)
-	private TipoMovimentacao tipoMovimentacao;
-
-	public TipoMovimentacao getTipoMovimentacao() {
-		return tipoMovimentacao;
-	}
-
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
-		this.tipoMovimentacao = tipoMovimentacao;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Calendar getData() {
-		return data;
-	}
-
-	public void setData(Calendar data) {
-		this.data = data;
-	}
-
-	public BigDecimal getValor() {
-		return valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-
+	/**
+	 * @return the conta
+	 */
 	public Conta getConta() {
 		return conta;
 	}
 
+	/**
+	 * @param conta the conta to set
+	 */
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+
+	/**
+	 * @return the tipoMovimentacao
+	 */
+	public TipoMovimentacao getTipoMovimentacao() {
+		return tipoMovimentacao;
+	}
+
+	/**
+	 * @param tipoMovimentacao the tipoMovimentacao to set
+	 */
+	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+		this.tipoMovimentacao = tipoMovimentacao;
 	}
 
 }

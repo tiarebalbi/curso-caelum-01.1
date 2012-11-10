@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 
+import br.com.caelum.financas.dao.MovimentacaoDAO;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.modelo.TipoMovimentacao;
@@ -25,7 +26,8 @@ public class PesquisaMovimentacoesBean {
 	}
 
 	public void pesquisa() {
-		System.out.println("Pesquisando pelos filtros solicitados");
+		MovimentacaoDAO mov = new MovimentacaoDAO(em);
+		this.movimentacoes = mov.pesquisar(getConta(), tipoMovimentacao, getMes());
 	}
 
 	public List<Movimentacao> getMovimentacoes() {

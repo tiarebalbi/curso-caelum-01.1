@@ -4,13 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Store;
+
 @Entity
 public class Tag {
 
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Field(index=Index.TOKENIZED, store=Store.YES)
 	private String nome;
+	
 	/**
 	 * @return the id
 	 */
@@ -35,4 +42,10 @@ public class Tag {
 	public void setNome(String nome) {
 		this.nome = nome;
 	} 
+	
+	@Override
+	public String toString(){
+		return this.getNome();
+		
+	}
 }

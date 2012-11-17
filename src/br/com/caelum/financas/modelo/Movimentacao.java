@@ -14,9 +14,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 @BatchSize(size = 10)
 @Entity
+@Indexed
 public class Movimentacao {
 	@Id
 	@GeneratedValue
@@ -26,6 +29,7 @@ public class Movimentacao {
 	private BigDecimal valor;
 
 	@ManyToMany
+	@IndexedEmbedded
 	private List<Tag> tags = new ArrayList<Tag>();
 
 	@ManyToOne

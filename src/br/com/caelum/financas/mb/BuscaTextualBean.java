@@ -6,6 +6,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 
+import org.apache.lucene.queryParser.ParseException;
+
+import br.com.caelum.financas.dao.MovimentacaoDAO;
 import br.com.caelum.financas.modelo.Movimentacao;
 
 @ManagedBean
@@ -28,8 +31,10 @@ public class BuscaTextualBean {
 		this.tags = tags;
 	}
 
-	public void busca() {
-		System.out.println("Buscando as movimentacoes associadas as tags");
+	public void busca() throws ParseException {
+		MovimentacaoDAO dao = new MovimentacaoDAO(em);
+		movimentacoes = dao.buscaMovimentacoesBaseadoNasTags(tags);
+		System.out.println("buscando por: " + tags);
 	}
 
 	public List<Movimentacao> getMovimentacoes() {
